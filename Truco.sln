@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrudoApp", "TrudoApp\TrudoApp.csproj", "{C5131B42-934F-4084-B151-E705E594E2E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrucoData", "TrucoData\TrucoData.csproj", "{DD6F42E7-14D0-49BB-8ED9-795512D3672A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrucoTestes", "TrucoTestes\TrucoTestes.csproj", "{BFFE0B75-7C58-4C9F-922C-F5047962F1D6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C5131B42-934F-4084-B151-E705E594E2E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5131B42-934F-4084-B151-E705E594E2E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5131B42-934F-4084-B151-E705E594E2E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5131B42-934F-4084-B151-E705E594E2E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD6F42E7-14D0-49BB-8ED9-795512D3672A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD6F42E7-14D0-49BB-8ED9-795512D3672A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD6F42E7-14D0-49BB-8ED9-795512D3672A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD6F42E7-14D0-49BB-8ED9-795512D3672A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFFE0B75-7C58-4C9F-922C-F5047962F1D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFFE0B75-7C58-4C9F-922C-F5047962F1D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFFE0B75-7C58-4C9F-922C-F5047962F1D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFFE0B75-7C58-4C9F-922C-F5047962F1D6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DC38198E-FBDA-4CB6-BACE-E4EA7DB550A2}
+	EndGlobalSection
+EndGlobal
