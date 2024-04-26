@@ -3,11 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrudoApp", "TrudoApp\TrudoApp.csproj", "{C5131B42-934F-4084-B151-E705E594E2E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrudoApp", "TrudoApp\TrudoApp.csproj", "{C5131B42-934F-4084-B151-E705E594E2E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrucoData", "TrucoData\TrucoData.csproj", "{DD6F42E7-14D0-49BB-8ED9-795512D3672A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrucoData", "TrucoData\TrucoData.csproj", "{DD6F42E7-14D0-49BB-8ED9-795512D3672A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrucoTestes", "TrucoTestes\TrucoTestes.csproj", "{BFFE0B75-7C58-4C9F-922C-F5047962F1D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrucoTestes", "TrucoTestes\TrucoTestes.csproj", "{BFFE0B75-7C58-4C9F-922C-F5047962F1D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{18987935-CE2C-4237-A767-DCEF8CCF077D}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\dotnet-desktop.yml = .github\workflows\dotnet-desktop.yml
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
