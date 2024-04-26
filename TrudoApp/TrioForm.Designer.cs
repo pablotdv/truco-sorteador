@@ -32,11 +32,11 @@
             fecharButton = new Button();
             salvarButton = new Button();
             panel2 = new Panel();
+            sortearCheckBox = new CheckBox();
             entidadeTextBox = new TextBox();
             label2 = new Label();
             nomeTextBox = new TextBox();
             label1 = new Label();
-            sortearCheckBox = new CheckBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -85,6 +85,18 @@
             panel2.Size = new Size(252, 141);
             panel2.TabIndex = 1;
             // 
+            // sortearCheckBox
+            // 
+            sortearCheckBox.AutoSize = true;
+            sortearCheckBox.Checked = true;
+            sortearCheckBox.CheckState = CheckState.Checked;
+            sortearCheckBox.Location = new Point(12, 116);
+            sortearCheckBox.Name = "sortearCheckBox";
+            sortearCheckBox.Size = new Size(63, 19);
+            sortearCheckBox.TabIndex = 4;
+            sortearCheckBox.Text = "Sortear";
+            sortearCheckBox.UseVisualStyleBackColor = true;
+            // 
             // entidadeTextBox
             // 
             entidadeTextBox.Location = new Point(12, 82);
@@ -116,16 +128,6 @@
             label1.Size = new Size(40, 15);
             label1.TabIndex = 0;
             label1.Text = "Nome";
-            // 
-            // sortearCheckBox
-            // 
-            sortearCheckBox.AutoSize = true;
-            sortearCheckBox.Location = new Point(12, 116);
-            sortearCheckBox.Name = "sortearCheckBox";
-            sortearCheckBox.Size = new Size(63, 19);
-            sortearCheckBox.TabIndex = 4;
-            sortearCheckBox.Text = "Sortear";
-            sortearCheckBox.UseVisualStyleBackColor = true;
             // 
             // TrioForm
             // 

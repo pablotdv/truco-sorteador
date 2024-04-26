@@ -24,6 +24,7 @@ namespace TrudoApp
             TrucoContext context = new TrucoContext(options);
             try
             {
+                context.Database.EnsureCreated();
                 context.Database.Migrate();
                 ApplicationConfiguration.Initialize();
                 Application.Run(new TrucoForm(context));
