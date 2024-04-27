@@ -13,13 +13,29 @@ namespace TrucoData
 
         public void OrdenarTrios()
         {
-            var trios = (_context.Trios.ToList()).OrderBy(a => Guid.NewGuid());
+            // Recuperar a lista de trios do banco de dados
+            var trios = _context.Trios.ToList();
 
+            // Embaralhar a lista de trios usando Fisher-Yates shuffle
+            Random rng = new Random();
+            int n = trios.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                var value = trios[k];
+                trios[k] = trios[n];
+                trios[n] = value;
+            }
+
+            // Atualizar a ordem dos trios embaralhados
             int ordem = 0;
             foreach (var trio in trios)
             {
                 trio.Ordem = ordem++;
             }
+
+            // Salvar as alterações no banco de dados
             _context.SaveChanges();
         }
 

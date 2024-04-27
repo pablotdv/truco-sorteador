@@ -163,6 +163,30 @@ namespace TrudoApp
                 MessageBox.Show("Arquivo não foi encontrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var ultimaEtapa = _context.Jogos.OrderByDescending(a => a.Etapa).FirstOrDefault();
+
+            if (ultimaEtapa != null)
+            {
+                if (MessageBox.Show($"Excluir jogos da etapa {ultimaEtapa.Etapa}?\nEssa ação é irreversível", "Excluir Etapa", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    var jogos = _context.Jogos.Where(a => a.Etapa == ultimaEtapa.Etapa).ToList();
+                    foreach (var jogo in jogos)
+                    {
+                        _context.Jogos.Remove(jogo);
+                    }
+                    _context.SaveChanges();
+                    CarregarJogos();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Não há etapas para excluir", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
     }
 
     public class JogoView

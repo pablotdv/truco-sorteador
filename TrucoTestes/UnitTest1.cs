@@ -76,6 +76,7 @@ namespace TrucoTestes
             _service.GerarJogos(2, 3);
             _service.GerarJogos(3, 3);
             _service.GerarJogos(4, 3);
+            _service.GerarJogos(5, 3);
 
             // Assert 
             var jogos = await _context.Jogos.ToListAsync();
