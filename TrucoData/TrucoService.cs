@@ -11,38 +11,38 @@ namespace TrucoData
             _context = context;
         }
 
-        public void OrdenarTrios()
+        public void SortearTrios()
         {
-            // Recuperar a lista de trios do banco de dados
+            var random = new Random();
             var trios = _context.Trios.Where(a => a.Sortear).ToList();
 
-            // Embaralhar a lista de trios usando Fisher-Yates shuffle
-            Random rng = new Random();
+            // Embaralhamento utilizando o algoritmo Fisher-Yates
             int n = trios.Count;
-            while (n > 1)
+            for (int i = n - 1; i > 0; i--)
             {
-                n--;
-                int k = rng.Next(n + 1);
-                var value = trios[k];
-                trios[k] = trios[n];
-                trios[n] = value;
+                int j = random.Next(i + 1);
+                var temp = trios[i];
+                trios[i] = trios[j];
+                trios[j] = temp;
             }
 
-            // Atualizar a ordem dos trios embaralhados
-            int ordem = 0;
-            foreach (var trio in trios)
+            // Atribuir a nova ordem aos trios
+            for (int i = 0; i < trios.Count; i++)
             {
-                trio.Ordem = ordem++;
+                trios[i].Ordem = i;
             }
 
-            // Salvar as alterações no banco de dados
             _context.SaveChanges();
         }
+
 
         public void GerarJogos(int etapa, int rodadas)
         {
             // Fetch all existing trios
-            var trios = _context.Trios.Where(a => a.Sortear).OrderBy(a => a.Ordem).ToList();
+            var trios = _context.Trios
+                .Where(a => a.Sortear)
+                .OrderBy(a => a.Ordem)
+                .ToList();
             int numTrios = trios.Count;
 
             if (numTrios < 2)
@@ -57,8 +57,7 @@ namespace TrucoData
                 numTrios = trios.Count;
                 if (trios.Count % 2 != 0)
                 {
-                    trios.Add(new Trio { Nome = "Folga", Ordem = int.MaxValue });
-                    trios = trios.OrderBy(a => a.Ordem).ToList();
+                    trios.Add(new Trio { Nome = "Folga" });
                     numTrios++;
                 }
                 for (int i = 0; i < numTrios / 2; i++)
@@ -72,49 +71,40 @@ namespace TrucoData
                         JogoId = Guid.NewGuid(),
                         Numero = numero,
                         Etapa = etapa,
-                        Data = DateTime.Now.AddDays(round),
                         Rodada = round + 1,
                         TrioAId = trioA.TrioId,
                         TrioBId = trioB.Nome.Equals("Folga") ? null : trioB.TrioId,
                     });
-                    _context.SaveChanges();
-                    // checar se jogo é duplicado
-                    //if (trioA.Nome != "Folga" && trioB.Nome != "Folga")
-                    //{
-                    //    var jogoDuplicado = _context.Jogos
-                    //        .Where(j => (j.TrioAId == trioA.TrioId && j.TrioBId == trioB.TrioId) || (j.TrioAId == trioB.TrioId && j.TrioBId == trioA.TrioId))
-                    //        .ToList();
-                    //    if (jogoDuplicado.Count > 1)
-                    //    {
-                    //        // excluir todos os jogos da etapa
-                    //        _context.Jogos.RemoveRange(_context.Jogos.Where(j => j.Etapa == etapa));
-                    //        _context.SaveChanges();
-                    //        ReordenarTrios();
-                    //        GerarJogos(etapa, rodadas);
-                    //    }
-                    //}
                 }
-
                 trios = this.ReordenarTrios();
             }
+            _context.SaveChanges();
         }
 
         private List<Trio> ReordenarTrios()
         {
-            var triosOrdenados = _context.Trios.Where(a => a.Sortear).OrderBy(t => t.Ordem).ToList();
+            var triosOrdenados = _context.Trios
+                .Where(a => a.Sortear)
+                .OrderBy(t => t.Ordem)
+                .ToList();
 
-            int primeiraOrdem = triosOrdenados.First().Ordem;
+            // Guarda o primeiro trio para mover para o final depois
+            var primeiroTrio = triosOrdenados.First();
 
-            for (int i = 0; i < triosOrdenados.Count - 1; i++)
+            // Remove o primeiro trio e adiciona no final
+            triosOrdenados.Remove(primeiroTrio);
+            triosOrdenados.Add(primeiroTrio);
+
+            // Reatribui as ordens
+            for (int i = 0; i < triosOrdenados.Count; i++)
             {
-                triosOrdenados[i].Ordem = triosOrdenados[i + 1].Ordem;
+                triosOrdenados[i].Ordem = i;
             }
-
-            triosOrdenados.Last().Ordem = primeiraOrdem;
 
             _context.SaveChanges();
 
             return _context.Trios.Where(a => a.Sortear).OrderBy(a => a.Ordem).ToList();
         }
+
     }
 }

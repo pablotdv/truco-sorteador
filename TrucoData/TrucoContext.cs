@@ -13,7 +13,14 @@ namespace TrucoData
 
         public DbSet<Trio> Trios { get; set; }
         public DbSet<Jogo> Jogos { get; set; }
-        public DbSet<SimulacaoJogo> SimulacoesJogos { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Jogo>()
+                .HasIndex(j => new { j.TrioAId, j.TrioBId });
+        }
     }
 
     [Table("Trios")]
@@ -34,25 +41,9 @@ namespace TrucoData
         public Guid JogoId { get; set; }
         public int Etapa { get; set; }
         public int Numero { get; set; }
-        public DateTime Data { get; set; }
         public int Rodada { get; set; }
         public Guid TrioAId { get; set; }
-        public Trio TrioA { get; set; }
-        public Guid? TrioBId { get; set; }
-        public Trio TrioB { get; set; }
-    }
-
-    [Table("SimulacoesJogos")]
-    public class SimulacaoJogo
-    {
-        [Key]
-        public Guid SimulacaoJogoId { get; set; }
-        public int Etapa { get; set; }
-        public int Numero { get; set; }
-        public DateTime Data { get; set; }
-        public int Rodada { get; set; }
-        public Guid TrioAId { get; set; }
-        public Trio TrioA { get; set; }
+        public Trio TrioA { get; set; }        
         public Guid? TrioBId { get; set; }
         public Trio TrioB { get; set; }
     }

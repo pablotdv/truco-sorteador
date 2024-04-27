@@ -47,13 +47,12 @@ namespace TrucoApp
             // if Questionar: Gerar jogos da etapa atual?
             if (MessageBox.Show($"Gerar jogos da etapa {proximoEtapa}?\nEssa ação é irreversível", "Sortear Jogos", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                var trucoService = new TrucoService(_context);
+                var trucoService = new TrucoService(_context);      
                 if (proximoEtapa == 1)
                 {
-                    trucoService.OrdenarTrios();
+                    trucoService.SortearTrios();
                 }
                 trucoService.GerarJogos(proximoEtapa, 3);
-
                 CarregarJogos();
             }
         }
