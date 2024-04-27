@@ -14,7 +14,7 @@ namespace TrucoData
         public void OrdenarTrios()
         {
             // Recuperar a lista de trios do banco de dados
-            var trios = _context.Trios.ToList();
+            var trios = _context.Trios.Where(a => a.Sortear).ToList();
 
             // Embaralhar a lista de trios usando Fisher-Yates shuffle
             Random rng = new Random();
@@ -57,7 +57,8 @@ namespace TrucoData
                 numTrios = trios.Count;
                 if (trios.Count % 2 != 0)
                 {
-                    trios.Add(new Trio { Nome = "Folga" });
+                    trios.Add(new Trio { Nome = "Folga", Ordem = int.MaxValue });
+                    trios = trios.OrderBy(a => a.Ordem).ToList();
                     numTrios++;
                 }
                 for (int i = 0; i < numTrios / 2; i++)
@@ -76,6 +77,22 @@ namespace TrucoData
                         TrioAId = trioA.TrioId,
                         TrioBId = trioB.Nome.Equals("Folga") ? null : trioB.TrioId,
                     });
+                    _context.SaveChanges();
+                    // checar se jogo é duplicado
+                    //if (trioA.Nome != "Folga" && trioB.Nome != "Folga")
+                    //{
+                    //    var jogoDuplicado = _context.Jogos
+                    //        .Where(j => (j.TrioAId == trioA.TrioId && j.TrioBId == trioB.TrioId) || (j.TrioAId == trioB.TrioId && j.TrioBId == trioA.TrioId))
+                    //        .ToList();
+                    //    if (jogoDuplicado.Count > 1)
+                    //    {
+                    //        // excluir todos os jogos da etapa
+                    //        _context.Jogos.RemoveRange(_context.Jogos.Where(j => j.Etapa == etapa));
+                    //        _context.SaveChanges();
+                    //        ReordenarTrios();
+                    //        GerarJogos(etapa, rodadas);
+                    //    }
+                    //}
                 }
 
                 trios = this.ReordenarTrios();
@@ -84,7 +101,7 @@ namespace TrucoData
 
         private List<Trio> ReordenarTrios()
         {
-            var triosOrdenados = _context.Trios.OrderBy(t => t.Ordem).ToList();
+            var triosOrdenados = _context.Trios.Where(a => a.Sortear).OrderBy(t => t.Ordem).ToList();
 
             int primeiraOrdem = triosOrdenados.First().Ordem;
 
