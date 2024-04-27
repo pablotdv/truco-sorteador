@@ -12,7 +12,7 @@ namespace TrucoTestes
         public TrucoServiceTests()
         {
             string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string databasePath = System.IO.Path.Combine(appDataPath, "TrudoApp", "truco.db");
+            string databasePath = System.IO.Path.Combine(appDataPath, "TrucoApp", "truco.db");
 
             // Ensure the directory exists
             System.IO.Directory.CreateDirectory(System.IO.Path.GetDirectoryName(databasePath));
@@ -157,7 +157,7 @@ namespace TrucoTestes
             }
             await _context.SaveChangesAsync();
 
-            int rodadas = 3;  // Número fixo de rodadas
+            int rodadas = 3;  // Nï¿½mero fixo de rodadas
             int jogosEsperados = (int)Math.Ceiling(trios / 2.0) * rodadas;
 
             // Act

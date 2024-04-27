@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TrucoData;
 
-namespace TrudoApp
+namespace TrucoApp
 {
     public partial class TrucoForm : Form
     {        

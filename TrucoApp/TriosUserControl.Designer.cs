@@ -1,4 +1,4 @@
-﻿namespace TrudoApp
+﻿namespace TrucoApp
 {
     partial class TriosUserControl
     {

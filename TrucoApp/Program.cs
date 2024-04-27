@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using TrucoData;
 using System;
 
-namespace TrudoApp
+namespace TrucoApp
 {
     internal static class Program
     {
@@ -13,7 +13,7 @@ namespace TrudoApp
         static void Main()
         {
             string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string databasePath = System.IO.Path.Combine(appDataPath, "TrudoApp", "truco.db");
+            string databasePath = System.IO.Path.Combine(appDataPath, "TrucoApp", "truco.db");
 
             System.IO.Directory.CreateDirectory(System.IO.Path.GetDirectoryName(databasePath));
 

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrudoApp", "TrudoApp\TrudoApp.csproj", "{C5131B42-934F-4084-B151-E705E594E2E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrucoApp", "TrucoApp\TrucoApp.csproj", "{C5131B42-934F-4084-B151-E705E594E2E9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TrucoData", "TrucoData\TrucoData.csproj", "{DD6F42E7-14D0-49BB-8ED9-795512D3672A}"
 EndProject
